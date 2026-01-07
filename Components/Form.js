@@ -25,7 +25,9 @@ function Form(){
             onChange={(event, selectedDate) => {
               if (selectedDate) {
                 console.log(selectedDate)
-                setDateSelected(false);
+                console.log(date)
+                setDateSelected(true);
+
               }
             }}
           />

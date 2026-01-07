@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Button, ActivityIndicator } from 'react-native';
 import { CameraView, CameraType, useCameraPermissions } from 'expo-camera';
-
+import * as Haptics from 'expo-haptics';
 function Scanner({ onScan, style,props }) {
   const [scanned, setScanned] = useState(false);
   const [permission, requestPermission] = useCameraPermissions();
@@ -13,6 +13,7 @@ function Scanner({ onScan, style,props }) {
  console.log('permission:'+ permission)
 
 function handleScan(result) {
+  Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Soft)
   if (scanned) return;
   setScanned(true);
   console.log(result.data);

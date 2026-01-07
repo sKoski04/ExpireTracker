@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Button, ActivityIndicator } from 'react-native';
 
 import { initDatabase, insertTestShelf, insertTestItem, fetchItems,resetDatabase } from './dbInit';
-import NavBar from './NavBar';
-import Scanner from './Scanner';
-import AppBar from './AppBar';
-import Form from './Form';
+import  NavBar from './Components/NavBar'
+import Scanner from './Components/Scanner';
+import AppBar from './Components/AppBar';
+import Form from './Components/Form';
 
 export default function App() {
   const [items, setItems] = useState([]);
