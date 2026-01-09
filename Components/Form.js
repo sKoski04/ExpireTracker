@@ -5,7 +5,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 
 
 
-function Form(){
+function Form({barCode}){
      const [date, setDate] = useState(new Date());
      const [dateSelected,setDateSelected]=useState(false);
     return(
@@ -13,8 +13,8 @@ function Form(){
              <Text>Information about your product</Text>
         <View style={styles.formBack}>
            
-            <TextInput>Barcode</TextInput>
-             <TextInput>name</TextInput>
+            <TextInput value={barCode} placeholder='Please enter barcode manually'/>
+             <TextInput placeholder='Product name'/>
              <TouchableOpacity onPress={function() {setDateSelected(true)}} ><Text>Select Expire Date</Text></TouchableOpacity>
           <Button style={styles.button} title='Save Product'></Button>
          {dateSelected && (
