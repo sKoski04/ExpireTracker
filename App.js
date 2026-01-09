@@ -61,7 +61,7 @@ console.log('Form')
   return(
   <View style={styles.container}>
       <View style={styles.content}>
-        <Form></Form>
+        <Form barCode={barcode}></Form>
       </View>
      <NavBar onChangeScreen={setState} />
     </View>
