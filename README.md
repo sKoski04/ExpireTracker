@@ -1,45 +1,38 @@
-# ExpireTracker 🥦📲
+# ExpireTracker – Grocery Management Mobile App 🥦📲
 
-ExpireTracker is a React Native mobile app that helps users keep track of their groceries and avoid food waste. Scan your products, log them in the app, and get notifications before they expire—keeping your fridge organized and your meals fresh.
+## Overview
+ExpireTracker is a React Native mobile app that helps users track their groceries and reduce food waste. The app allows users to scan products, view expiration dates, and receive notifications before items expire, keeping their fridge organized and meals fresh.
 
-## Features
+# Key Contributions & Learning
 
-Barcode Scanning: Quickly add products by scanning barcodes.
+Developed barcode scanning functionality for quick product entry
 
-Expiration Alerts: Get notifications when products are nearing their best-before dates.
+Implemented expiration alerts and product list management
 
-Product List: View all your scanned items in one place with expiration info.
+Built a clean, mobile-first interface with React Native and React Navigation
 
-Search & Filter: Find specific items or filter by expiration date. (Coming)
+Used local storage (AsyncStorage / SQLite) for persisting user data
 
-User-Friendly UI: Clean, mobile-first interface for easy grocery management.
+Integrated push notifications for timely reminders
 
-## Tech Stack
+# Tech Stack
 
-React Native – Cross-platform mobile app
+React Native – cross-platform mobile development
 
-Expo / React Native CLI – App development environment
+Expo / React Native CLI – development environment
 
-React Navigation – Screen navigation
+React Navigation – screen navigation
 
-AsyncStorage / SQLite – Local storage for saved products
+AsyncStorage / SQLite – local data storage
 
-Barcode Scanner (expo-barcode-scanner) – Scan product barcodes
+Expo Barcode Scanner & Notifications – product scanning and alerts
 
-Push Notifications (Expo Notifications) – Alerts for expiring products (Coming)
+# Future Extensions
 
+Synchronize data across multiple devices
 
+Add recipe reminders using soon-to-expire items
 
-## Future Improvements
+Integrate public product database for automatic product info
 
-Sync data across multiple devices
-
-Add reminders for recipes using soon-to-expire items
-
-Integrate a public product database for automatic product info
-
-Dark mode and customizable notifications
-
-## Screenshots
-
-### (Coming once the GUI is not in test mode anymore)
+Implement dark mode and customizable notifications
