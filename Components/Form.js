@@ -2,10 +2,10 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import {Button, View, Text, StyleSheet, TouchableOpacity, TextInput, ScrollView, FlatList } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { insertTestItem, getProductByBarcode } from '../dbInit';
+import { saveProduct, getProductByBarcode, updateProductCount } from '../dbInit';
 
 
-function Form({barCode,expireDate, shelves}){
+function Form({barCode, expireDate, shelves, onSaved}){
   const [productName, setProductName] = useState('');
   const [date, setDate] = useState(new Date());
   const [dateSelected, setDateSelected] = useState(false);
@@ -42,12 +42,16 @@ function Form({barCode,expireDate, shelves}){
       return;
     }
     try {
-      await insertTestItem(selectedShelf, barCode, productName, date.toISOString().split('T')[0]);
+      await saveProduct(barCode, productName, date.toISOString().split('T')[0], selectedShelf);
       console.log('✓ Product saved successfully! - Name:', productName, 'Barcode:', barCode, 'Expires:', date.toISOString().split('T')[0], 'Shelf ID:', selectedShelf);
       alert('Product saved successfully!');
       setProductName('');
       setDate(new Date());
       setDateSelected(false);
+      // Await the onSaved callback so state updates before navigating back
+      if (typeof onSaved === 'function') {
+        await onSaved();
+      }
     } catch (error) {
       console.log('Error saving product:', error);
       alert('Error saving product');

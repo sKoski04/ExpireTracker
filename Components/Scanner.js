@@ -18,7 +18,7 @@ function handleScan(result) {
   if (scanned) return;
   setScanned(true);
   setLocalBarcode(result.data);
- // setBarcode(result.data);
+ 
   console.log(result.data);
     if (onScan) onScan(result.data);
   

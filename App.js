@@ -23,6 +23,9 @@ export default function App() {
     (async function() {
       await initDatabase();
       await loadShelves();
+      await fetchShelves();
+      await fetchItems();
+     
     })();
   }, []);
 
@@ -55,6 +58,7 @@ export default function App() {
 if(state==='HOME'){
   console.log("home screen")
 
+
   return (
     <View style={styles.container}>
       <AppBar></AppBar>
@@ -65,12 +69,13 @@ if(state==='HOME'){
           style={styles.shelfList}
           data={shelves}
           keyExtractor={(item) => item.id.toString()}
-          renderItem={({ item }) => (
+          renderItem={({ item: shelf }) => (
             <TouchableOpacity style={styles.shelfItem} onPress={() => {
-              setSelectedShelf(item);
+              setSelectedShelf(shelf);
               setState('SHELF');
             }}>
-              <Text style={styles.shelfName}>{item.name}</Text>
+              <Text style={styles.shelfName}>{shelf.name}</Text>
+              <Text style={styles.productCount}>{shelf.productCount} products</Text>
             </TouchableOpacity>
           )}
           ListEmptyComponent={
@@ -109,6 +114,7 @@ if(state==='ADD'){
   console.log("ADD screen")
 
 
+
   return (
     <View style={styles.container}>
       <AppBar></AppBar>
@@ -127,15 +133,20 @@ if(state==='ADD'){
    </View>
   );
 }
-if(state==='FORM'){
+  if(state==='FORM'){
 console.log('Form')
+
+  async function handleFormSaved() {
+    await loadShelves();
+    setState('HOME');
+  }
 
   return(
    
   <View style={styles.container}>
     <AppBar></AppBar>
       <View style={styles.content}>
-        <Form barCode={barcode} expireDate={expireDate} shelves={shelves}></Form>
+        <Form barCode={barcode} expireDate={expireDate} shelves={shelves} onSaved={handleFormSaved}></Form>
       </View>
      <NavBar onChangeScreen={setState} />
     </View>
@@ -188,16 +199,23 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   shelfItem: {
-    backgroundColor: 'white',
+    backgroundColor: '#c3d6db',
     padding: 15,
     marginBottom: 10,
     borderRadius: 8,
     borderLeftWidth: 4,
-    borderLeftColor: '#1067d9',
+    borderRightWidth:4,
+    borderLeftColor: '#1a7b94',
+    borderRightColor:'#1a7b94'
   },
   shelfName: {
     fontSize: 18,
     fontWeight: '500',
+  },
+  productCount: {
+    fontSize: 14,
+    color: '#555',
+    marginTop: 5,
   },
   emptyText: {
     textAlign: 'center',
