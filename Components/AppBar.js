@@ -10,7 +10,7 @@ function AppBar(){
 }
 const styles = StyleSheet.create({
 palkki:{
-    backgroundColor:'#326cbe2c',
+    backgroundColor:'#546B41',
     height:100,
     width: '100%',
     paddingTop:50,
@@ -19,7 +19,7 @@ palkki:{
 
 },
 text:{
-    color:'black',
+    color:'#FFF8EC',
     fontWeight:'bold',
     fontSize:25
 

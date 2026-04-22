@@ -1,20 +1,22 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Pressable } from 'react-native';
 
 export default function NavBar(props) {
   return (
     <View style={styles.navBar}>
-      <TouchableOpacity style={styles.navItem} onPress={function() { props.onChangeScreen('HOME'); }}>
+      <Pressable style={styles.navItem} onPress={function() { props.onChangeScreen('HOME'); }}>
+       
         <Text style={styles.navText}>Home</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity style={styles.navItem} onPress={function() { props.onChangeScreen('ADD'); }}>
+      </Pressable>
+      <Pressable style={styles.navItem} onPress={function() { props.onChangeScreen('ADD'); }}>
         <Text style={styles.navText}>Add</Text>
-      </TouchableOpacity>
+      </Pressable>
 
-      <TouchableOpacity style={styles.navItem} onPress={function() { props.onChangeScreen('HELP'); }}>
+      <Pressable style={styles.navItem} onPress={function() { props.onChangeScreen('HELP'); }}>
         <Text style={styles.navText}>Help</Text>
-      </TouchableOpacity>
+      </Pressable>
+
+      
     </View>
   );
 }
@@ -26,7 +28,7 @@ const styles = StyleSheet.create({
     right: 0,
     height: 60,
     flexDirection: 'row',
-    backgroundColor: '#326cbe2c',
+    backgroundColor: '#DCCCAC',
     justifyContent: 'space-around',
     alignItems: 'center',
     borderTopWidth: 0,
@@ -34,7 +36,7 @@ const styles = StyleSheet.create({
     borderRadius:10
     
   },
-  navItem: { padding: 10 },
-  navText: { fontSize: 16, color: '#333' },
+  navItem: { padding: 10, backgroundColor:'#546B41', borderRadius:10, minWidth:80, alignItems:'center' },
+  navText: { fontSize: 16, color: '#FFF8EC' },
 });
 

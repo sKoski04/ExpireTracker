@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Button, ActivityIndicator, Alert, TextInput, FlatList, TouchableOpacity, Modal } from 'react-native';
+import { View, Text, StyleSheet, Button, ActivityIndicator, Alert, TextInput, FlatList, TouchableOpacity, Modal, Pressable } from 'react-native';
 
 import { initDatabase, insertTestShelf, insertTestItem, fetchItems, fetchShelves, resetDatabase } from './dbInit';
 import  NavBar from './Components/NavBar'
@@ -64,7 +64,7 @@ if(state==='HOME'){
       <AppBar></AppBar>
       <View style={styles.content}>
         <Text style={styles.title}>My Shelves</Text>
-        <Button title="+ Add Shelf" onPress={() => setShowShelfModal(true)} />
+       
         <FlatList
           style={styles.shelfList}
           data={shelves}
@@ -82,6 +82,9 @@ if(state==='HOME'){
             <Text style={styles.emptyText}>No shelves yet. Create one to get started!</Text>
           }
         />
+  
+          <Pressable style={styles.add} onPress={() => setShowShelfModal(true)}><Text>Add Shelf</Text></Pressable>
+          
       </View>
 
       <Modal visible={showShelfModal} transparent animationType="fade">
@@ -105,7 +108,7 @@ if(state==='HOME'){
           </View>
         </View>
       </Modal>
-
+ 
      <NavBar onChangeScreen={setState} />
     </View>
   );
@@ -181,13 +184,14 @@ if(state==='SHELF'){
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#e9e9e9ff',
+    backgroundColor: '#99AD7A',
   },
   content: {
-    flex: 1,
-    justifyContent: 'flex-start',
+   
+  justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
+  
   },
   title: {
     fontSize: 24,
@@ -271,6 +275,16 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#1067d9',
     fontWeight: '600',
+  },
+  add:{
+    backgroundColor:"#DCCCAC",
+    width:100,
+    height:50,
+    alignItems:'center',
+    justifyContent:'center',
+    borderRadius:10,
+
+
   },
 });
 
